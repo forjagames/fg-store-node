@@ -1,5 +1,5 @@
 {
-  "name": "fg-store-node",
+  "name": "@forjagames/store",
   "version": "0.0.1",
   "description": "Node integration for Forja Games Store.",
   "main": "lib/index.js",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/forjagames/fg-store-node#readme",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.11.10",
@@ -31,5 +32,8 @@
     "tsc": "^1.20150623.0",
     "typescript": "^4.0.3"
   },
-  "types": "lib"
+  "types": "lib",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
 }
