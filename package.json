@@ -1,6 +1,6 @@
 {
   "name": "@forjagames/store",
-  "version": "0.0.1",
+  "version": " 0.0.2",
   "description": "Node integration for Forja Games Store.",
   "main": "lib/index.js",
   "scripts": {
