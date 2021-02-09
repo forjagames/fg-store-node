@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { ApiUrls } from "../constants/urls";
-import { ICredentials } from "../interfaces/credentiales.interface";
+import { ICredentials } from "../interfaces/credentials.interface";
 import { ILoginInfo } from "../interfaces/login-info.interface";
 
 export class ForjaGamesAPI {
