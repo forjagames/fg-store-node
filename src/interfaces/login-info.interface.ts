@@ -1,4 +1,4 @@
 export interface ILoginInfo {
   expiration?: Date;
-  token: string;
+  accessToken: string;
 }

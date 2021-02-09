@@ -2,6 +2,7 @@ import Axios from "axios";
 import { ApiUrls } from "../constants/urls";
 import { ICredentials } from "../interfaces/credentials.interface";
 import { ILoginInfo } from "../interfaces/login-info.interface";
+import bcrypt from "bcrypt";
 
 export class ForjaGamesAPI {
   private static session: ILoginInfo;
@@ -9,6 +10,10 @@ export class ForjaGamesAPI {
 
   private static get url(): string {
     return (ApiUrls as any)[this.credentials.environment || "production"];
+  }
+
+  private static get projectId(): string {
+    return this.credentials.projectId;
   }
 
   private static get sessionIsExpired() {
@@ -38,13 +43,16 @@ export class ForjaGamesAPI {
     }
 
     const username = this.credentials.projectId;
-    const password = this.session.token;
+    const password = this.session.accessToken;
 
     return { username, password };
   }
 
   private static async login() {
-    const response = await Axios.post(`${this.url}/login`, this.credentials);
+    const key = this.credentials.apiKey;
+    const secret = this.credentials.secret;
+    const token = bcrypt.hash([key, secret].join("+"), 12);
+    const response = await Axios.post(`${this.url}/api/${this.projectId}/auth/login`, { key, token });
     this.session = response.data as ILoginInfo;
     return true;
   }
